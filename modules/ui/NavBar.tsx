@@ -7,9 +7,9 @@ export default function NavBar({loggedIn}: Props) {
         <nav className="bg-white p-3 w-full">
             <ul className="flex space-x-3">
             <li><Link href="/">Travelocity</Link></li>
-            <li><Link href="/">Explore Locations</Link></li>
+            <li><Link href="/explore">Explore Locations</Link></li>
             <li><Link href="/">Plan Expenses</Link></li>
-            <li><Link href="/">Blog</Link></li>
+            <li><Link href="/blog">Blog</Link></li>
             {loggedIn ? <Link href="/account/login">Log in</Link> : <Link href="/account/logout">Log out</Link>}
             </ul>
         </nav>

@@ -2,11 +2,6 @@ import { ChangeEvent, useEffect, useState } from "react"
 import SearchCard from "./SearchCard";
 import Typography from "./Typography";
 
-const dummyData: Array<Location> = [
-    { heading: 'Chicago', subheading: 'City in United States'},
-    { heading: 'Los Angeles', subheading: 'City in United States' }
-]
-
 export default function LocationPicker() {
     const [locationQuery, setLocationQuery] = useState<string>('');
     const [locations, setLocations] = useState<Array<Location>>([]);

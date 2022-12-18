@@ -12,6 +12,7 @@ const ViewMoviePage = () => {
 
     return(
         <>
+            {JSON.stringify(id)}
             {JSON.stringify(movie)}
             {JSON.stringify(user?.collectionId)};   
         </>

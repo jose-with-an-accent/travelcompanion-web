@@ -38,7 +38,7 @@ export default function Index() {
         <section className="bg-orange-500 w-full min-h-screen-3/4 p-8 text-white">
             <Typography level="h2">Always Relevant.</Typography>
             <SearchCard heading="Dynamic Data" subheading="Data from online communities is used to aid your trip." imageURL={undefined} />
-            <SearchCard heading="Frequent blog posts" subheading="Data from online communities is used to aid your trip." imageURL={undefined} />
+            <SearchCard heading="Frequent blog posts" subheading="Need inspiration for a location? Get " imageURL={undefined} />
         </section>
         <footer className="bg-black text-2xl">
             <h1>Plan your flight for free.</h1>

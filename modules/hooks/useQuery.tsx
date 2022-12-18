@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import PocketbaseContext from "../PocketbaseContext";
-import { Movie } from "../types/Movie";
 export enum QUERY_TYPE {
     ALL,
     ONE
@@ -8,11 +7,26 @@ export enum QUERY_TYPE {
 type QueryOptions = {
     id?: string
 }
-const useQuery = async (collectionName: string, type: QUERY_TYPE, options: QueryOptions = {}): Movie | Movie[] | null => {
+function useQuery<T>(collectionName: string, type: QUERY_TYPE, options: T): T | T[] | undefined {
     const pbContext = useContext(PocketbaseContext);
-    const data = await pbContext.collection(collectionName).getFullList<Movie>();
+    const [data, setData] = useState<T | T [] | undefined>();
+
+    useEffect(() => {
+        if (type === QUERY_TYPE.ALL) {
+            pbContext.collection(collectionName).getFullList<T>()
+            .then(d => setData(d))
+            .catch(error => console.error("Error getting data:" + error));
+    
+        }
+        else {
+            pbContext.collection(collectionName).getOne<T>(options)
+            .then(d => setData(d))
+            .catch(error => console.error("Error getting data:" + error));
+    
+        }
+    }, [])
+    let error = null;
     return data;
-    // .catch(error => console.log(error));
 
 }
-export default useQuery
+export default useQuery;
