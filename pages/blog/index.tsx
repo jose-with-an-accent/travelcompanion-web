@@ -10,18 +10,23 @@ type BlogPost = {
     post: string
 }
 export default function BlogIndex() {
-    const blogPosts = useQuery<BlogPost[]>('posts', QUERY_TYPE.ALL, {});
+    const blogPosts = useQuery<BlogPost[]>('posts', QUERY_TYPE.ALL);
 
     console.log(blogPosts);
     const [error, setError] = useState<string>();
     
     return(
-        <div className="p-3 max-w-3xl mx-auto space-y-3">
+        <div className="flex">
+        <div className="p-3 w-xl mx-auto space-y-3">
         <Typography level="h1">Blog</Typography>
         <p>{error}</p>
         <div className="space-y-8">{blogPosts?.map(post => (
             <BlogCard title={post.title} content={post.post} description={post.description} id={post.id}/>
         ))}</div>
+        </div>
+        <div>
+            <Typography level="h3">Filter by tags:</Typography>
+        </div>
         </div>
     )
 }

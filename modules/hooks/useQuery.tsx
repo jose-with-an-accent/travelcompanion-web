@@ -5,9 +5,9 @@ export enum QUERY_TYPE {
     ONE
 }
 type QueryOptions = {
-    id?: string
-}
-function useQuery<T>(collectionName: string, type: QUERY_TYPE, options: T): T | T[] | undefined {
+    id: string
+};
+function useQuery<T>(collectionName: string, type: QUERY_TYPE, options?: QueryOptions): T | T[] | undefined {
     const pbContext = useContext(PocketbaseContext);
     const [data, setData] = useState<T | T [] | undefined>();
 
